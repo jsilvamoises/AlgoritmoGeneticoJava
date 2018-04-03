@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jsm;
+package com.jsm.jgap;
 
+import com.jsm.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,28 +15,29 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
+import org.jgap.IChromosome;
 
 /**
  *
  * @author moises
  */
-public class Grafico extends ApplicationFrame{
-    private List<Individuo> melhores = new ArrayList<>();
+public class GraficoJGap extends ApplicationFrame{
+    private List<IChromosome> melhores = new ArrayList<>();
     int i =0;
     private DefaultCategoryDataset carregarDados(){
         DefaultCategoryDataset dados = new DefaultCategoryDataset();
         
         melhores.forEach(m -> {
-            dados.addValue(m.getNotaAvaliacao(), "Melhores Soluções", ""+(i++));
+            dados.addValue(m.getFitnessValue(), "Melhores Soluções", ""+(i++));
         });
         
         return dados;
     }
-    public Grafico(String title) {
+    public GraficoJGap(String title) {
         super(title);
     }
     
-    public Grafico(String title,String tituloGrafico,List<Individuo> melhores) {
+    public GraficoJGap(String title,String tituloGrafico,List melhores) {
         super(title);
         this.melhores = melhores;
         JFreeChart chart = ChartFactory.createLineChart3D(tituloGrafico, "Geração", "Valor", carregarDados(),PlotOrientation.VERTICAL,true, true , false);

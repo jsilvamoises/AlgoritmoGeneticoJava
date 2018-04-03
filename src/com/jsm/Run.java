@@ -64,9 +64,9 @@ public class Run {
         });
 
         Double limite = 10.0;
-        int populacao = 100;
+        int populacao = 1000;
         Double taxaMutacao = 0.01;
-        int numeroGeracoes = 200;
+        int numeroGeracoes = 2000;
 
         AlgoritmoGenetico ag = new AlgoritmoGenetico(populacao);
 
